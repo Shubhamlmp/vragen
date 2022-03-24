@@ -29,4 +29,4 @@ Route::get('/dashboard',[CustomAuthController::class,'dashboard'])->middleware('
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
-
+Route::get('question',[CustomAuthController::class,'question']);
