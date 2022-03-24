@@ -18,12 +18,10 @@ return new class extends Migration
             $table->integer('ans_User_id')->unsigned();
             $table->integer('ans_Que_id')->unsigned();
             $table->longText('add_answer');
-            $table->integer('ans_Cat_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('ans_Que_id')->references('cat_Que_id')->on('add_ques');
             $table->foreign('ans_User_id')->references('user_id')->on('users');
-            $table->foreign('ans_Cat_id')->references('category_id')->on('categories');
         });
     }
 
