@@ -61,33 +61,31 @@ class CustomAuthController extends Controller
         }
     }
 
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        // $data = array();
-        // if (Session::has('loginID')) {
-        //     $data = User::where('id', '=', Session::get('loginID'))->first();
-        // }
-        // return view('dashboard', compact('data'));
-        return view('dashboard');
+
+        return view('dashboard')->with('Questions', AddQue::all());
     }
 
     public function logout()
     {
         if (session()->has('loginID')) {
-           session()->forget('loginID');
+            session()->forget('loginID');
             return redirect('/login');
         }
     }
 
-    public function view(Request $request){
-        $search = $request['search'] ?? "";
-        if($search != ""){
-            $Questions = AddQue::where('add_question', 'LIKE', "%search%")->get();
-        }
-        else{
-            $Questions = AddQue::all();
-        }
-        $data = compact('Questions', 'search');
-        return view('questions-view')->with($data);
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+
+        // Search in the title and body columns from the add_question table
+        $Questions = AddQue::query()
+            ->where('add_question', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return view('dashboard', compact('Questions'));
     }
 }
