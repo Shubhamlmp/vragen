@@ -3,14 +3,23 @@
     padding: 0;
 }
 
-.main {
-    width: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(https://wallpaperaccess.com/full/2292810.jpg);
-    background-position: center;
+body {
+    height: 100vh;
+    background: #efefef;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(to right bottom, #fecb89, #e6b2c6);
+  }
 
+/* .main {
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%);
+    background-position: center;
     background-size: cover;
     height: 100vh;
-}
+} */
 
 .navbar {
     width: 1200px;
@@ -128,6 +137,7 @@ ul li a:hover {
     padding-bottom: 25px;
     font-family: Arial;
     letter-spacing: 1.2px;
+    font-size: 20px;
     line-height: 30px;
 }
 
@@ -174,7 +184,7 @@ ul li a:hover {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8)50%, rgba(0, 0, 0, 0.8)50%);
     position: absolute;
     top: -20px;
-    left: 870px;
+    left: 950px;
     transform: translate(0%, -5%);
     border-radius: 10px;
     padding: 25px;
@@ -192,7 +202,10 @@ ul li a:hover {
     padding: 8px;
 }
 
-.form input {
+
+  
+
+.input-form-tag {
     width: 240px;
     height: 35px;
     background: transparent;

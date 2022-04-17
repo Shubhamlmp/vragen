@@ -3,6 +3,7 @@
 
 <head>
     <title>Vragen-login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="icon" href="https://thumbs.dreamstime.com/b/vn-logo-design-initial-letter-sci-fi-style-game-esport-technology-digital-community-business-v-n-sport-modern-italic-192979294.jpg" type="image/x-icon">
 
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
@@ -22,10 +23,11 @@
             </div>
         </div>
         <div class="content">
-            <h1><span>VREGAN</span><br>You Can post your <br>Query & Answer</h1>
-            <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque
-                expedita atque eveniet <br> quis nesciunt. Quos nulla vero consequuntur, fugit nemo ad delectus
-                <br> a quae totam ipsa illum minus laudantium?
+            <h1><span>VREGAN</span><br>A public platform building the definitive
+                 <br>collection of questions & answers.</h1>
+            <p class="par">A community-based space to find 
+                and contribute answers to<br>technical and non-technical challenges,
+                and one of the<br>most popular websites in the world.
             </p>
 
             <button class="cn"><a href="registration">JOIN US</a></button>
@@ -40,15 +42,30 @@
                     <div class="alert alert-danger">{{Session::get('fail')}}</div>
                     @endif
                     @csrf
+
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email" value="{{old('email')}}">
+                        <input type="email" class="input-form-tag" name="email" placeholder="Enter Email" value="{{old('email')}}">
                         <span style="font-size: 100%" class="text-danger">@error('email') {{$message}} @enderror</span>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                        <input type="password" class="input-form-tag" name="password" placeholder="Enter Password" id="myInput">
+                        <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i> -->
                         <span style="font-size: 100%" class="text-danger">@error('password') {{$message}} @enderror</span>
+                    </div>
 
+                    <div class="form-group mt-4">
+                        <input type="checkbox" onclick="myFunction()">&nbsp;&nbsp;&nbsp;Show Password</input>
+                        <script>
+                            function myFunction() {
+                                var x = document.getElementById("myInput");
+                                if (x.type === "password") {
+                                    x.type = "text";
+                                } else {
+                                    x.type = "password";
+                                }
+                            }
+                        </script>
                     </div>
 
                     <div class="form-group">
@@ -57,9 +74,10 @@
                 </form>
 
 
-                <p class="link">Don't have an account<br>
-                    <a href="registration">Sign up </a> here</a>
+                <p class="link">
+                    <a href="{{ route('ForgetPasswordGet') }}">Forgot Your Password? </a>
                 </p>
+                
                 <p class="liw">Log in with</p>
 
                 <div class="icons" style="text-align: center">

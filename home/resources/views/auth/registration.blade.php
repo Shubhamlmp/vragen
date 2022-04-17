@@ -42,19 +42,19 @@
                     @endif
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{old('name')}}">
+                        <input type="text" class="input-form-tag" name="name" placeholder="Enter Name" value="{{old('name')}}">
                         <span style="font-size: 100%" class="text-danger">@error('name') {{$message}} @enderror</span>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email" value="{{old('email')}}">
+                        <input type="email" class="input-form-tag" name="email" placeholder="Enter Email" value="{{old('email')}}">
                         <span style="font-size: 100%" class="text-danger">@error('email') {{$message}} @enderror</span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                        <input type="password" class="input-form-tag" name="password" placeholder="Enter Password">
                         <span style="font-size: 100%" class="text-danger">@error('password') {{$message}} @enderror</span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                        <input type="password" class="input-form-tag" name="password_confirmation" placeholder="Confirm Password">
                         <span style="font-size: 100%" class="text-danger">@error('password_confirmation') {{$message}} @enderror</span>
                     </div>
                     <div class="form-group">
