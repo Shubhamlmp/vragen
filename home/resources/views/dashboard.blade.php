@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Vragen-home</title>
+    <title>Vragen</title>
 
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
     <link rel="icon" href="https://thumbs.dreamstime.com/b/vn-logo-design-initial-letter-sci-fi-style-game-esport-technology-digital-community-business-v-n-sport-modern-italic-192979294.jpg" type="image/x-icon">
@@ -53,8 +53,8 @@
                 @endif
 
             </table>
-        </div>
-    </div>
+
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
 </body>

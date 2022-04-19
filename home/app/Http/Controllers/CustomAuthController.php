@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Notifications\WelcomeEmailNotification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Category;
 use App\Models\AddQue;
 use App\Models\AddAns;
+use App\Models\User;
 use Session;
 
 class CustomAuthController extends Controller
@@ -36,6 +37,7 @@ class CustomAuthController extends Controller
         $res = $user->save();
 
         if ($res) {
+            $user->notify(new WelcomeEmailNotification($user));
             return back()->with('success', 'You have registered successfully');
         } else {
             return back()->with('fail', 'Something wrong');
