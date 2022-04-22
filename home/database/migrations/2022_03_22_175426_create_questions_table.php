@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('add_ques', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('questions', function (Blueprint $table) {
+            $table->increments('que_id');
             $table->integer('cat_Que_id')->unsigned();
             $table->integer('add_User_id')->unsigned();
             $table->text('add_question');
             $table->timestamps();
+            $table->integer('views');
 
             $table->foreign('cat_Que_id')->references('category_id')->on('categories');
-            $table->foreign('add_User_id')->references('user_id')->on('users');
+            $table->foreign('add_User_id')->references('id')->on('users');
         });
     }
 
