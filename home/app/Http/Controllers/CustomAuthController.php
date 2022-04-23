@@ -83,7 +83,7 @@ class CustomAuthController extends Controller
         $search = $request->input('search');
 
         // Search in the title and body columns from the add_question table
-        $Questions = AddQue::query()
+        $Questions = Question::query()
             ->where('add_question', 'LIKE', "%{$search}%")
             ->get();
 
