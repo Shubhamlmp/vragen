@@ -6,8 +6,8 @@ use App\Notifications\WelcomeEmailNotification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\AddQue;
-use App\Models\AddAns;
+use App\Models\Question;
+use App\Models\Answer;
 use App\Models\User;
 use Session;
 
@@ -53,7 +53,7 @@ class CustomAuthController extends Controller
         $user = User::where('email', '=', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
-                $request->session()->put('loginID', $user->user_id);
+                $request->session()->put('loginID', $user->id);
                 return redirect('dashboard');
             } else {
                 return back()->with('fail', 'Wrong password');
@@ -66,7 +66,7 @@ class CustomAuthController extends Controller
     public function dashboard(Request $request)
     {
 
-        return view('dashboard')->with('Questions', AddQue::all());
+        return view('dashboard')->with('Questions', Question::all());
     }
 
     public function logout()
