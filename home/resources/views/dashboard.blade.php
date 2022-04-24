@@ -36,23 +36,44 @@
             </div>
         </div>
         <div class="content">
-            <table id="customers">
-                <tr>
-                    <td style="background-color: #ff7200;">Questions</td>
-                </tr>
+            <div class="scroll-cards" id="data">
                 @if($Questions->isNotEmpty())
                 @foreach($Questions as $ques)
-                <tr>
-                    <td>{{$ques->add_question}}</td>
-                </tr>
+                <div class="card">
+                    <div class="mails">
+                        <img src="https://randomuser.me/api/portraits/men/20.jpg" />
+                        <div class="mail-names">
+                            {{ App\Models\User::getUserNameByID($ques->add_User_id) }}
+
+                        </div>
+                    </div>
+                    <div class="mail-info">
+                        <a style="color: black; text-decoration:none;" href="{{ url ('/answer/'.$ques->que_id) }}" class="s-link">{{$ques->add_question}}</a>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="mes-date">
+                            {{ App\Models\Answer::getTotalAns($ques->que_id) }} answers
+                        </div>
+                        <div class="mes-date">
+                            {{ App\Models\Question::getTotalCount($ques->que_id) }} views
+                        </div>
+
+                        <div class="date"><b>asked</b> {{$ques->created_at->diffForHumans() }}</div>
+                    </div>
+                </div>
                 @endforeach
                 @else
                 <div>
                     <h2>No Questions found</h2>
                 </div>
                 @endif
-
-            </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            {!! $Questions->appends(['search' => request()->query('search')])->links() !!}
+        </div>
 
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

@@ -24,3 +24,12 @@ Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'
 Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPasswordGet');
 Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
+
+// Route::get('/', [QnAController::class, 'index']);
+// Route::get('/Ans', [QnAController::class, 'index']);
+
+// Route::get('/search', [QnAController::class, 'search'])->name('search');
+
+Route::get('/answer/{id}', [CustomAuthController::class, 'answer']);
+
+Route::get('/getUserNameById/{id}', [CustomAuthController::class, 'getUserNameById']);

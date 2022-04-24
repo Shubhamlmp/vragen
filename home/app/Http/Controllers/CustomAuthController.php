@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\User;
+use Carbon\Carbon;
 use Session;
 
 class CustomAuthController extends Controller
@@ -66,7 +67,7 @@ class CustomAuthController extends Controller
     public function dashboard(Request $request)
     {
 
-        return view('dashboard')->with('Questions', Question::all());
+        return view('dashboard')->with('Questions',Question::simplePaginate(5));
     }
 
     public function logout()
@@ -85,9 +86,27 @@ class CustomAuthController extends Controller
         // Search in the title and body columns from the add_question table
         $Questions = Question::query()
             ->where('add_question', 'LIKE', "%{$search}%")
-            ->get();
+            ->simplePaginate(5);
 
         // Return the search view with the resluts compacted
         return view('dashboard', compact('Questions'));
+    }
+
+    public function answer($que_id)
+    {
+
+        Question::find($que_id)->increment('views');
+        // $id = $request->input('$que_id');
+        // $Answers = AddAns::all();
+        // return view('answer', compact('Answers'));
+        // return view('answer')->with('Answers',AddAns::simplePaginate(1));
+        $queA = Question::select('add_question')
+                ->where('que_id', $que_id)
+                ->first();
+
+        $Answers = Answer::where('ans_Que_id', $que_id)->get();
+        return view('answer', compact('Answers', 'queA'));
+        // return view('answer')->with('Answers');
+        // dd($queA);
     }
 }
